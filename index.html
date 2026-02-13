@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyakuren Dojo Administration</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1 id="appTitle">Hyakuren Dojo Administration</h1>
+        <p id="appSubtitle">Member: Hyakuren Juku • Instructor: Hyakuren Kyōshi</p>
+      </div>
+      <div class="controls">
+        <label for="languageSelect" id="languageLabel">Language</label>
+        <select id="languageSelect">
+          <option value="EN">EN</option>
+          <option value="ID">ID</option>
+          <option value="JP">JP</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" id="authSection">
+        <div class="tabs">
+          <button class="tab active" data-tab="login" id="tabLogin">Login</button>
+          <button class="tab" data-tab="register" id="tabRegister">Register</button>
+        </div>
+
+        <form id="loginForm" class="tabContent active">
+          <h2 id="loginHeader">Login</h2>
+          <label>
+            <span id="loginEmailLabel">Email</span>
+            <input type="email" id="loginEmail" required />
+          </label>
+          <label>
+            <span id="loginPasswordLabel">Password</span>
+            <input type="password" id="loginPassword" required />
+          </label>
+          <label>
+            <span id="loginRoleLabel">Role</span>
+            <select id="loginRole">
+              <option value="member">Hyakuren Juku</option>
+              <option value="instructor">Hyakuren Kyōshi</option>
+            </select>
+          </label>
+          <button type="submit" id="loginButton">Login</button>
+        </form>
+
+        <form id="registerForm" class="tabContent">
+          <h2 id="registerHeader">Register</h2>
+          <label>
+            <span id="registerNameLabel">Full Name</span>
+            <input type="text" id="registerName" required />
+          </label>
+          <label>
+            <span id="registerEmailLabel">Email</span>
+            <input type="email" id="registerEmail" required />
+          </label>
+          <label>
+            <span id="registerPasswordLabel">Password</span>
+            <input type="password" id="registerPassword" required />
+          </label>
+          <label>
+            <span id="registerAttendanceLabel">Attendance Frequency</span>
+            <select id="registerAttendance" required>
+              <option value="2-3 times a week">2-3 times a week</option>
+              <option value="1 time a week">1 time a week</option>
+            </select>
+          </label>
+          <label>
+            <span id="registerBloodTypeLabel">Blood Type</span>
+            <input type="text" id="registerBloodType" placeholder="A/B/AB/O" required />
+          </label>
+          <label>
+            <span id="registerBackgroundLabel">Martial Arts Background (if any)</span>
+            <textarea id="registerBackground" rows="2"></textarea>
+          </label>
+          <label>
+            <span id="registerDesiredLabel">Desired Martial Art</span>
+            <select id="registerDesired" required>
+              <option value="Aikido">Aikido</option>
+              <option value="Karate">Karate</option>
+            </select>
+          </label>
+          <label>
+            <span id="registerRoleLabel">Role</span>
+            <select id="registerRole">
+              <option value="member">Hyakuren Juku</option>
+              <option value="instructor">Hyakuren Kyōshi</option>
+            </select>
+          </label>
+          <button type="submit" id="registerButton">Create Account</button>
+        </form>
+      </section>
+
+      <section class="card hidden" id="appSection">
+        <nav class="subnav">
+          <button class="viewBtn active" data-view="dashboard" id="navDashboard">Dashboard</button>
+          <button class="viewBtn" data-view="schedule" id="navSchedule">Schedule</button>
+          <button class="viewBtn" data-view="checkin" id="navCheckin">Check In</button>
+          <button class="viewBtn" data-view="logs" id="navLogs">Check-In Logs</button>
+          <button id="logoutButton">Logout</button>
+        </nav>
+
+        <section id="dashboard" class="view active">
+          <h2 id="dashboardTitle">Dashboard</h2>
+          <p id="welcomeMessage"></p>
+          <ul id="memberInfo"></ul>
+        </section>
+
+        <section id="schedule" class="view">
+          <h2 id="scheduleTitle">Class Schedule</h2>
+          <ul id="scheduleList"></ul>
+        </section>
+
+        <section id="checkin" class="view">
+          <h2 id="checkinTitle">Check in Class</h2>
+          <form id="checkinForm">
+            <label>
+              <span id="checkinClassLabel">Class</span>
+              <select id="checkinClass"></select>
+            </label>
+            <label>
+              <span id="checkinDateLabel">Date</span>
+              <input type="date" id="checkinDate" required />
+            </label>
+            <button type="submit" id="checkinButton">Submit Check-In</button>
+          </form>
+        </section>
+
+        <section id="logs" class="view">
+          <h2 id="logsTitle">Log Report for Check-In</h2>
+          <table>
+            <thead>
+              <tr>
+                <th id="logNameHeader">Name</th>
+                <th id="logRoleHeader">Role</th>
+                <th id="logClassHeader">Class</th>
+                <th id="logDateHeader">Date</th>
+              </tr>
+            </thead>
+            <tbody id="logTable"></tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
